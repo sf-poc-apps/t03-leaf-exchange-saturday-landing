@@ -140,4 +140,25 @@ store = {}; // fresh browser
   );
 }
 
+// --- Hero structure: one h1 with one subtitle directly after it ---
+
+{
+  const html = fs.readFileSync(path.join(ROOT, "public", "index.html"), "utf8");
+  assert.strictEqual((html.match(/<h1>/g) || []).length, 1, "hero has exactly one h1");
+  assert.strictEqual(
+    (html.match(/class="hero-subtitle"/g) || []).length,
+    1,
+    "hero has exactly one subtitle element"
+  );
+  const heroMatch = html.match(/<header class="hero"[\s\S]*?<\/header>/);
+  assert.ok(heroMatch, "hero header exists");
+  assert.ok(
+    /<h1>[\s\S]*?<\/h1>\s*<p class="hero-subtitle">/.test(heroMatch[0]),
+    "subtitle appears immediately after the h1"
+  );
+  const css = fs.readFileSync(path.join(ROOT, "public", "styles.css"), "utf8");
+  assert.ok(/\.hero h1\s*\{[^}]*font-size:\s*clamp\(2\.4rem/.test(css), "hero h1 font-size was increased");
+  assert.ok(/\.hero-subtitle\s*\{[^}]*font-size/.test(css), "subtitle has a smaller font size than the heading");
+}
+
 console.log("All JS tests passed.");
