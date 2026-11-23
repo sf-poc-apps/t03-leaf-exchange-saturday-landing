@@ -3,15 +3,129 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Starter page</title>
+  <title>Leaf Exchange Saturday</title>
   <link rel="stylesheet" href="/styles.css">
   <script src="/sf-config.js"></script>
   <script src="/sf-banner.js"></script>
 </head>
 <body>
   <main class="container">
-    <h1>Starter page</h1>
-    <p>This is the static site template. The builder replaces this content with the planned site.</p>
+    <header class="hero" id="hero">
+      <p class="hero-eyebrow">Neighbourhood plant swap</p>
+      <h1>Leaf Exchange Saturday</h1>
+      <p class="hero-tagline">Bring a plant, take a plant home.</p>
+      <ul class="hero-details">
+        <li><span class="detail-label">When</span> <span class="detail-value">Saturday, 10:00</span></li>
+        <li><span class="detail-label">Where</span> <span class="detail-value">Community Garden</span></li>
+      </ul>
+    </header>
+
+    <section class="section" id="how-it-works" aria-labelledby="how-it-works-title">
+      <h2 id="how-it-works-title">How it works</h2>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-number" aria-hidden="true">1</span>
+          <h3>Bring a plant</h3>
+          <p>Pot up a cutting, seedling or spare plant from your windowsill or garden.</p>
+        </li>
+        <li class="step">
+          <span class="step-number" aria-hidden="true">2</span>
+          <h3>Swap at the table</h3>
+          <p>Place your plant on the swap table and pick any other plant in exchange.</p>
+        </li>
+        <li class="step">
+          <span class="step-number" aria-hidden="true">3</span>
+          <h3>Take it home</h3>
+          <p>Chat with neighbours about care tips, then carry your new plant home.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section" id="plants" aria-labelledby="plants-title">
+      <h2 id="plants-title">Plants you might meet</h2>
+      <p class="section-intro">Eight examples of what neighbours have swapped before. Anything rooted goes!</p>
+      <ul class="plant-grid">
+        <li class="plant-card">
+          <div class="plant-thumb thumb-mint" aria-hidden="true"></div>
+          <h3>Mint</h3>
+          <p>Fast-spreading herb; great for tea and mojitos.</p>
+        </li>
+        <li class="plant-card">
+          <div class="plant-thumb thumb-snake" aria-hidden="true"></div>
+          <h3>Snake plant</h3>
+          <p>Nearly unkillable, happy in low light.</p>
+        </li>
+        <li class="plant-card">
+          <div class="plant-thumb thumb-pothos" aria-hidden="true"></div>
+          <h3>Pothos</h3>
+          <p>Trailing vine that roots in a glass of water.</p>
+        </li>
+        <li class="plant-card">
+          <div class="plant-thumb thumb-basil" aria-hidden="true"></div>
+          <h3>Basil</h3>
+          <p>Summer favourite for pesto and window sills.</p>
+        </li>
+        <li class="plant-card">
+          <div class="plant-thumb thumb-aloe" aria-hidden="true"></div>
+          <h3>Aloe vera</h3>
+          <p>Succulent with soothing, easy-to-split pups.</p>
+        </li>
+        <li class="plant-card">
+          <div class="plant-thumb thumb-fern" aria-hidden="true"></div>
+          <h3>Boston fern</h3>
+          <p>Lush green fronds for a shady corner.</p>
+        </li>
+        <li class="plant-card">
+          <div class="plant-thumb thumb-jade" aria-hidden="true"></div>
+          <h3>Jade plant</h3>
+          <p>Slow-growing succulent that lives for decades.</p>
+        </li>
+        <li class="plant-card">
+          <div class="plant-thumb thumb-lavender" aria-hidden="true"></div>
+          <h3>Lavender</h3>
+          <p>Bee-friendly and smells wonderful on a sill.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Frequently asked questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Do I need a plant to take part?</summary>
+          <div class="faq-answer">Ideally yes, but first-timers are welcome to look around and say hello. Somebody always has spare seedlings.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What kinds of plants can I bring?</summary>
+          <div class="faq-answer">Houseplants, herbs, vegetables, seedlings and cuttings. Just make sure pots are labelled and pest-free.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How many plants can I swap?</summary>
+          <div class="faq-answer">Take home as many plants as you brought. If you bring three, you can pick three.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What if my plant is not looking great?</summary>
+          <div class="faq-answer">Come anyway! Someone will happily give it a good home and a bit of care advice.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Is there a cost to join?</summary>
+          <div class="faq-answer">No. The swap is free and run by neighbours for neighbours. No money changes hands.</div>
+        </details>
+      </div>
+    </section>
+
+    <section class="section" id="what-to-bring" aria-labelledby="bring-title">
+      <h2 id="bring-title">What to bring</h2>
+      <p class="section-intro">Tick items off as you prepare. Your ticks are saved in this browser.</p>
+      <form class="checklist" id="checklist" onsubmit="return false;">
+        <label class="checklist-item"><input type="checkbox" id="bring-plant"> A potted plant, cutting or seedling</label>
+        <label class="checklist-item"><input type="checkbox" id="bring-labels"> Labels or masking tape for plant names</label>
+        <label class="checklist-item"><input type="checkbox" id="bring-bag"> A tote bag or box to carry plants home</label>
+        <label class="checklist-item"><input type="checkbox" id="bring-water"> A little water for thirsty plants</label>
+        <label class="checklist-item"><input type="checkbox" id="bring-tips"> Your best care tips to share</label>
+      </form>
+      <button type="button" class="reset-button" id="reset-checklist">Reset checklist</button>
+    </section>
   </main>
   <script src="/app.js"></script>
 </body>
