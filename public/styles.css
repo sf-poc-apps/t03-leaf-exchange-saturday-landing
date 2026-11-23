@@ -1,0 +1,5 @@
+:root { --fg: #1d1b20; --muted: #5f5a66; --accent: #6b2fb3; --bg: #faf8fc; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, sans-serif; color: var(--fg); background: var(--bg); }
+.container { max-width: 960px; margin: 0 auto; padding: 32px 20px; }
+h1 { color: var(--accent); }

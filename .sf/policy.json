@@ -1,0 +1,10 @@
+{
+  "banner_refs": [
+    "public/index.html"
+  ],
+  "allow": {
+    "subprocess": [
+      "tests/"
+    ]
+  }
+}
