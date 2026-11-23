@@ -120,6 +120,12 @@ store = {}; // fresh browser
   assert.ok(faqCount >= 3, "several FAQ items exist");
   assert.ok(html.includes("/sf-banner.js"), "POC banner script is referenced");
   assert.ok(html.includes("/sf-config.js"), "sf-config script is referenced");
+  const footerMatch = html.match(/<footer[^>]*>([\s\S]*?)<\/footer>/);
+  assert.ok(footerMatch, "page has a footer element");
+  assert.ok(
+    footerMatch[1].includes("Built by the software factory POC"),
+    "footer contains the POC credit line"
+  );
 }
 
 // --- FAQ toggle (details/summary semantics verified structurally) ---

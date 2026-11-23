@@ -1,4 +1,5 @@
 import pathlib
+import re
 from html.parser import HTMLParser
 
 PUBLIC = pathlib.Path(__file__).resolve().parent.parent / "public"
@@ -132,6 +133,15 @@ def test_app_js_no_network():
     js = (PUBLIC / "app.js").read_text()
     for banned in ("fetch(", "XMLHttpRequest", "websocket", "https://", "http://"):
         assert banned not in js.lower(), f"app.js must not reference {banned}"
+
+
+def test_footer_has_poc_credit():
+    c = parse_index()
+    footer = (PUBLIC / "index.html").read_text()
+    match = re.search(r"<footer[^>]*>([\s\S]*?)</footer>", footer)
+    assert match, "index.html must have a footer element"
+    assert "Built by the software factory POC" in match.group(1)
+    assert "footer" in (PUBLIC / "styles.css").read_text(), "footer must be styled"
 
 
 def test_no_credential_fields_or_submit_target():
