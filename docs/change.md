@@ -1,29 +1,23 @@
-# change.md
-
 ## Change summary
-Add a small static footer line reading "Built by the software factory POC" to the bottom of the single landing page. This is a pure markup/style addition with no backend, network, or data changes, and does not touch the POC banner, `/health`, or CI/infra files.
+Increase the size of the main hero heading and add a one-line subtitle directly beneath it. This is a purely presentational, static change to `index.html` and `styles.css` — no new sections, no behaviour, no network calls. Stays within the plain HTML/CSS/JS, no-backend guardrails.
 
 ## Changes
+1. **Enlarge the main hero heading**
+   - In `index.html`, keep the existing hero `<h1>` element (the event title); do not add a second `<h1>`.
+   - In `styles.css`, increase the hero heading's `font-size` by one clear step (e.g. bump to a larger value using a responsive/relative unit), keeping it readable and not clipped at both breakpoints.
+   - **Acceptance criteria:** Given the page loads, When I view the hero, Then the main heading renders visibly larger than before, remains a single `<h1>`, and does not overflow or clip on a narrow mobile viewport or a desktop viewport.
 
-1. **Add footer line to `index.html`**
-   - Add a `<footer>` element at the end of the page content (after the "What to bring" checklist section, before closing `</body>`), containing the exact text `Built by the software factory POC`.
-   - Keep the existing POC banner markup unchanged and visible.
-   - **Acceptance criteria:**
-     - Given the page loads, When I scroll to the bottom, Then I see a footer containing the text "Built by the software factory POC".
-     - The existing POC banner remains present and unchanged.
-     - No network requests, remote fonts, or external assets are introduced.
-
-2. **Style the footer in `styles.css`**
-   - Add minimal styling for the new `<footer>` (spacing, centered or left-aligned text, readable contrast) consistent with the existing page styles.
-   - Must reflow/remain readable on both mobile and desktop breakpoints, with no remote fonts/assets.
-   - **Acceptance criteria:**
-     - Given a narrow mobile viewport and a desktop viewport, When I view the footer, Then the text is readable and does not overflow or overlap other content.
+2. **Add a one-line subtitle under the heading**
+   - In `index.html`, add exactly one subtitle element (e.g. a `<p class="hero-subtitle">`) immediately after the hero `<h1>`. Use short, generic, placeholder text — no personal data, no real addresses, no contact info.
+   - In `styles.css`, style the subtitle to sit directly below the heading with appropriate spacing and a smaller font size than the heading.
+   - **Acceptance criteria:** Given the page loads, When I view the hero, Then exactly one subtitle line appears directly beneath the main heading, is visually subordinate to the heading, and reflows legibly on mobile and desktop.
 
 ## Tests to add or update
-- Update the structural assertions in the existing test file (e.g. `tests/page.test.js`) to add a check that a `<footer>` element exists and its text content includes "Built by the software factory POC".
-- No changes needed to checklist-persistence or FAQ-toggle tests.
+- No change to existing automated structural assertions (3 steps, 8 plant cards), FAQ toggle, or checklist persistence tests — they must still pass.
+- Optionally add a small DOM assertion to the existing test file that the hero contains exactly one `<h1>` and one subtitle element following it (purely structural; no network).
 
 ## Out of scope
-- Any changes to the POC banner, `/health` endpoint, `Dockerfile`, nginx config, or CI files.
-- Links, contact info, social icons, or any outbound/external references in the footer.
-- Dynamic/generated footer content or any backend involvement.
+- Any new sections, cards, FAQ items, or checklist items.
+- Changes to the POC banner, `/health` endpoint, `Dockerfile`, nginx config, or CI files.
+- Remote fonts/assets, CDN links, or any network requests.
+- Content beyond a short generic placeholder subtitle (no real event details or personal data).
